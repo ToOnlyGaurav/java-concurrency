@@ -1,20 +1,18 @@
 package org.guidelines.examples.complient;
 
-public class ControlledStop implements Runnable {
+import org.guidelines.examples.faulty.AbstractControlledStop;
+import org.jcip.annotations.ThreadSafe;
+
+@ThreadSafe
+public class ControlledStop extends AbstractControlledStop {
     private volatile boolean done = false;
 
     @Override
-    public void run() {
-        while (!done) {
-            try {
-                System.out.println(System.currentTimeMillis());
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
+    protected boolean isDone() {
+        return done;
     }
 
+    @Override
     public void shutdown() {
         done = true;
     }

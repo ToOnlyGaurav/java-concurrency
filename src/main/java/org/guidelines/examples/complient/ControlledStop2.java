@@ -1,25 +1,18 @@
 package org.guidelines.examples.complient;
 
-public class ControlledStop2 implements Runnable {
-    private boolean done = false;
+import org.guidelines.examples.faulty.AbstractControlledStop;
+
+public class ControlledStop2 extends AbstractControlledStop {
+    private volatile boolean done = false;
 
     @Override
-    public void run() {
-        while (!isDone()) {
-            try {
-                System.out.println(System.currentTimeMillis());
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
+    protected synchronized boolean isDone() {
+        return done;
     }
 
+    @Override
     public synchronized void shutdown() {
         done = true;
     }
-
-    private synchronized boolean isDone() {
-        return done;
-    }
 }
+

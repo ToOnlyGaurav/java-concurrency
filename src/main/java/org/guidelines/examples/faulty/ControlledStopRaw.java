@@ -4,15 +4,17 @@ package org.guidelines.examples.faulty;
 import org.jcip.annotations.NotThreadSafe;
 
 @NotThreadSafe
-public class ControlledStop extends AbstractControlledStop {
+public class ControlledStopRaw implements Runnable {
     private boolean done = false;
 
     @Override
-    protected boolean isDone() {
-        return done;
+    public void run() {
+        int i = 0;
+        while (!done) {
+            i++;
+        }
     }
 
-    @Override
     public void shutdown() {
         done = true;
     }

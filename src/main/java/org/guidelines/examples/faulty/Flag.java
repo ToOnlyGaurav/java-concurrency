@@ -1,6 +1,7 @@
 package org.guidelines.examples.faulty;
 
-import org.guidelines.examples.annotation.NotThreadSafe;
+
+import org.jcip.annotations.NotThreadSafe;
 
 import java.util.ArrayList;
 import java.util.List;

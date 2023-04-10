@@ -1,22 +1,21 @@
 package org.guidelines.examples.complient;
 
+import org.guidelines.examples.faulty.AbstractControlledStop;
+import org.jcip.annotations.ThreadSafe;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ControlledStop1 implements Runnable {
+@ThreadSafe
+
+public class ControlledStop1 extends AbstractControlledStop {
     private AtomicBoolean done = new AtomicBoolean(false);
 
     @Override
-    public void run() {
-        while (!done.get()) {
-            try {
-                System.out.println(System.currentTimeMillis());
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
+    protected boolean isDone() {
+        return done.get();
     }
 
+    @Override
     public void shutdown() {
         done.set(true);
     }
