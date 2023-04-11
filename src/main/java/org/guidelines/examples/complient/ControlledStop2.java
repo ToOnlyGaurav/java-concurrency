@@ -3,7 +3,7 @@ package org.guidelines.examples.complient;
 import org.guidelines.examples.faulty.AbstractControlledStop;
 
 public class ControlledStop2 extends AbstractControlledStop {
-    private volatile boolean done = false;
+    private boolean done = false;
 
     @Override
     protected synchronized boolean isDone() {

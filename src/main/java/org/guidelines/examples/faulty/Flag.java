@@ -7,9 +7,9 @@ final class Flag {
     private boolean flag = true;
 
     public void toggle() {
-//        boolean tempVale = !flag;// Unsafe
-//        Utils.randomSleep(10);
-        flag = !flag;
+        boolean tempVale = !flag;// Unsafe
+        Utils.randomSleep(10);
+        flag = tempVale;
     }
 
     public boolean getFlag() {
