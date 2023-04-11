@@ -3,13 +3,11 @@ package org.guidelines.examples.faulty;
 import org.jcip.annotations.NotThreadSafe;
 
 @NotThreadSafe
-final class Flag {
-    private boolean flag = true;
+public class flag1 {
+    private volatile boolean flag = true;
 
     public void toggle() {
-//        boolean tempVale = !flag;// Unsafe
-//        Utils.randomSleep(10);
-        flag = !flag;
+        flag ^= true;
     }
 
     public boolean getFlag() {
