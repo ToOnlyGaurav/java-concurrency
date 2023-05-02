@@ -68,7 +68,6 @@ public class ProducerConsumer {
 
     static class Indexer implements Runnable {
         private final BlockingQueue<File> queue;
-
         public Indexer(BlockingQueue<File> queue) {
             this.queue = queue;
         }

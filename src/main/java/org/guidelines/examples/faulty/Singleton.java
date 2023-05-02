@@ -13,7 +13,6 @@ import java.util.stream.IntStream;
 public class Singleton {
     static ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
     AtomicInteger atomicInteger = new AtomicInteger(0);
-
     public static void main(String[] args) throws InterruptedException {
         int[] argumentPositionsForKey = {1, 2};
         List<Integer> argumentPositionsForKeyList = Arrays.stream(argumentPositionsForKey)
@@ -46,7 +45,6 @@ public class Singleton {
         System.out.println(Thread.currentThread().getName() + ", Sleeping for : " + sleep + " generated id: " + id);
         Thread.sleep(sleep);
 
-
         System.out.println("Processing: " + Thread.currentThread().getName() + " generated id: " + id);
         Integer orDefault = map.getOrDefault(id, 0);
         sleep = (int) Math.abs(Math.random() * 1000);
@@ -65,7 +63,6 @@ public class Singleton {
 
             this.singleton = singleton;
         }
-
         @Override
         public void run() {
             try {
